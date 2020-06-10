@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Apps</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
+
 <body>
     <h1>Users</h1>
     <table>
         <tr>
-            <th>ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Age</th>
         </tr>
-        {% for User in all_users %}
+        {% for user in all_users %}
         <tr>
-            <td>{{ User.id }}</td>
-            <td>{{ User.first_name }} {{ User.last_name }}</td>
-            <td>{{ User.email }}</td>
-            <td>{{ User.age }}</td>
-        </tr>
+            <td>{{ user.first_name }} {{ user.last_name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.age }}</td>
+         </tr>
         {% endfor %}
     </table>
-    <form id="users" action="process" method="POST">
+    <form id="users" action="/process" method="POST">
         {% csrf_token %}
         <div class="middle-section">
             <div class="form-section">
@@ -42,4 +44,5 @@
         </div>
     </form>
 </body>
+
 </html>
